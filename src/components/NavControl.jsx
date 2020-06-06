@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import '../styles/NavControl.css';
+import "../styles/NavControl.css";
 
 class NavControl extends Component {
-  constructor(props) {
-    super(props);
-  }
+    handleClick = (e) => {
+        return 
+    }
 
   render() {
     return (
@@ -14,15 +14,22 @@ class NavControl extends Component {
           role="navigation"
           aria-label="main navigation"
         >
-          <div className="navbar-brand">
-          </div>
+          <div className="navbar-brand"></div>
           <div className="navbar-start">
             <div className="navbar-item">
               <div className="buttons">
-                <div className="button is-success" onClick="addColumn()">
+                <div
+                  className="button is-success"
+                  name="addcolumn"
+                  onClick={""}
+                >
                   Add Column
                 </div>
-                <div className="button is-danger" onClick="removeColumn()">
+                <div
+                  className="button is-danger"
+                  name="removecolumn"
+                  onClick="removeColumn()"
+                >
                   Remove Column
                 </div>
               </div>
@@ -41,9 +48,7 @@ class NavControl extends Component {
                   Clear All
                 </div>
                 <div className="navbar-item has-dropdown is-hoverable">
-                  <button className="button" >
-                    Colors
-                  </button>
+                  <button className="button">Colors</button>
                   <div className="navbar-dropdown">
                     <button
                       onClick="pickBlue()"
@@ -64,7 +69,7 @@ class NavControl extends Component {
                       className="button ButtonLink"
                       id="white"
                     >
-                        White
+                      White
                     </button>
                   </div>
                 </div>
