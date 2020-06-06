@@ -25,9 +25,38 @@ class App extends Component {
     });
   };
 
+  handleAddColumn = () => {
+    this.setState((state) => {
+      const columns = state.columns.concat(state.columns.length);
+      return {
+        color: state.color,
+        rows: state.rows,
+        columns: columns,
+      };
+    });
+  }
 
+  handleRemoveRow = () => {
+    this.setState((state) => {
+      const rows = state.rows.slice(0, state.rows.length - 1);
+      return {
+        color: state.color,
+        rows: rows,
+        columns: state.columns,
+      };
+    });
+  }
 
-  
+  handleRemoveColumn = () => {
+    this.setState((state) => {
+      const columns = state.columns.slice(0, state.rows.length - 1);
+      return {
+        color: state.color,
+        rows: state.rows,
+        columns: columns,
+      };
+    });
+  }
 
   componentDidMount() {
     
