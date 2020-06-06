@@ -1,27 +1,45 @@
 import React, { Component } from "react";
 import Table from "./components/Table";
-import { Navbar, Button, NavDropdown, Nav } from "react-bootstrap";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {  Button, NavDropdown, Nav } from "react-bootstrap";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       color: "#FFFFFF",
+      rows: [0],
+      columns: [0],
     };
+    this.handleAddRow = this.handleAddRow.bind(this);
+
   }
 
-  handleNavControl = (name) => {};
+  handleAddRow = () => {
+    this.setState((state) => {
+      const rows = state.rows.concat(state.rows.length);
+      return {
+        color: state.color,
+        rows: rows,
+        columns: state.columns,
+      };
+    });
+  };
+
+
+
+  
+
+  componentDidMount() {
+    
+  }
+
 
   render() {
     return (
       <>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+        <Nav>
             <Nav className="mr-auto navbar-start">
-              <Button>Add Column</Button>
+              <Button onClick={this.handleAddColumn}>Add Column</Button>
               <Button>Remove Column</Button>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item>Blue</NavDropdown.Item>
@@ -30,14 +48,11 @@ class App extends Component {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Button>Add Row</Button>
-              <Button>Remove Row</Button>
+              <Button onClick={this.handleAddRow}>Add Row</Button>
+              <Button onClick={this.handleRemoveRow}>Remove Row</Button>
             </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <div className="App">
-          <Table />
-        </div>
+        </Nav>
+        <Table onClick={this.addRow} rows={this.state.rows} columns={this.state.columns}/>
       </>
     );
   }
