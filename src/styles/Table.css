@@ -6,3 +6,15 @@ td {
   border: 3.5px solid black;
   width: 35px;
 }
+
+.blue {
+  background-color: blue;
+}
+
+.red {
+  background-color: red;
+}
+
+.uncolored {
+  background-color: white;
+}
