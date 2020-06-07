@@ -17,20 +17,7 @@ class App extends Component {
 
   }
 
-  handleMouseDown = (event) => {
-    event.target.style.backgroundColor = this.state.color;
-    this.setState({isDragged: true});
-  }
-
-  handleMouseOver = (e) => {
-    if(this.state.isDragged)
-      e.target.style.backgroundColor = this.state.color;
-  }
-
-  handleMouseUp = (event) => {
-    this.setState({isDragged: false});
-  }
-
+ 
   handleAddRow = () => {
     this.setState((state) => {
       const rows = state.rows.concat(state.rows.length);
@@ -41,6 +28,20 @@ class App extends Component {
       };
     });
   };
+
+  handleMouseDown = (event) => {
+    event.target.style.backgroundColor = this.state.color;
+    this.setState({isDragged: true})
+  }
+
+  handleMouseOver = (event) => {
+    if(this.state.isDragged)
+      event.target.style.backgroundColor= this.state.color
+  }
+
+  handleMouseUp = (event) => {
+    this.setState.state({isDragged: false})
+  }
 
   handleAddColumn = () => {
     this.setState((state) => {
@@ -83,9 +84,9 @@ class App extends Component {
     let cells = this.state.columns;
     for(let i = 0; i < cells.length; i++)
     {
-      if(cells[i].style.backgroundColor === '')
+      if(cells[i].className === "uncolored")
       {
-        cells[i].style.backgroundColor = this.state.color
+        cells[i].className = this.state.color
       }
 
       return cells;
@@ -116,7 +117,12 @@ class App extends Component {
               <Button onClick={this.handleRemoveRow}>Remove Row</Button>
             </Nav>
         </Nav>
-        <Table color={this.state.color} rows={this.state.rows} columns={this.state.columns} handleMouseDown={this.handleMouseDown} handleMouseOver={this.handleMouseOver} handleMouseUp={this.handleMouseUp}/>
+        <Table color={this.state.color} rows={this.state.rows} columns={this.state.columns}
+        isDragged={this.isDragged}
+        handleMouseDown={this.handleMouseDown}
+        handleMouseUp={this.handleMouseUp}
+        handleMouseOver={this.handleMouseOver}
+        />
       </>
     );
   }
