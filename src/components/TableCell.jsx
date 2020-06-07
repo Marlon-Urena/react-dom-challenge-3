@@ -6,12 +6,9 @@ class TableCell extends Component {
   componentDidMount() {
   }
 
-  changeColor() {
-    
-  }
-
   render() {
-    return (<td className="pixel uncolored" onClick={this.changeColor}></td>);
+    console.log("table cell" + this.props.color)
+    return (<td className="uncolored" onClick={(e) => e.target.className = this.props.color}></td>);
   }
 }
 

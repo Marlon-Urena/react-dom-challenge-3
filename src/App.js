@@ -6,11 +6,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: "#FFFFFF",
+      color: "white",
       rows: [0],
       columns: [0],
     };
     this.handleAddRow = this.handleAddRow.bind(this);
+    this.handleChangeColor = this.handleChangeColor.bind(this);
+    this.currentColor = React.createRef();
 
   }
 
@@ -56,7 +58,11 @@ class App extends Component {
         columns: columns,
       };
     });
-  }
+  };
+
+  handleChangeColor = (color) => {
+    this.setState({color: color});
+  };
 
   componentDidMount() {
     
@@ -67,13 +73,13 @@ class App extends Component {
     return (
       <>
         <Nav>
-            <Nav className="mr-auto navbar-start">
+            <Nav className="mr-auto navbar-start" onSelect={this.handleChangeColor}>
               <Button onClick={this.handleAddColumn}>Add Column</Button>
               <Button>Remove Column</Button>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item>Blue</NavDropdown.Item>
-                <NavDropdown.Item>Red</NavDropdown.Item>
-                <NavDropdown.Item>White</NavDropdown.Item>
+                <NavDropdown.Item eventKey="blue">Blue</NavDropdown.Item>
+                <NavDropdown.Item eventKey="red">Red</NavDropdown.Item>
+                <NavDropdown.Item eventKey="white">White</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Nav>
@@ -81,7 +87,7 @@ class App extends Component {
               <Button onClick={this.handleRemoveRow}>Remove Row</Button>
             </Nav>
         </Nav>
-        <Table onClick={this.addRow} rows={this.state.rows} columns={this.state.columns}/>
+        <Table color={this.state.color} rows={this.state.rows} columns={this.state.columns}/>
       </>
     );
   }
