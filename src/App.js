@@ -9,6 +9,7 @@ class App extends Component {
       color: "white",
       rows: [0],
       columns: [0],
+      isDragged: false,
     };
     this.handleAddRow = this.handleAddRow.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
@@ -16,6 +17,7 @@ class App extends Component {
 
   }
 
+ 
   handleAddRow = () => {
     this.setState((state) => {
       const rows = state.rows.concat(state.rows.length);
@@ -26,6 +28,20 @@ class App extends Component {
       };
     });
   };
+
+  handleMouseDown = (event) => {
+    event.target.style.backgroundColor = this.state.color;
+    this.setState({isDragged: true})
+  }
+
+  handleMouseOver = (event) => {
+    if(this.state.isDragged)
+      event.target.style.backgroundColor= this.state.color
+  }
+
+  handleMouseUp = (event) => {
+    this.setState({isDragged: false})
+  }
 
   handleAddColumn = () => {
     this.setState((state) => {
@@ -64,6 +80,19 @@ class App extends Component {
     this.setState({color: color});
   };
 
+  fillCellsWithColor = () => {
+    let cells = this.state.columns;
+    for(let i = 0; i < cells.length; i++)
+    {
+      if(cells[i].className === "uncolored")
+      {
+        cells[i].className = this.state.color
+      }
+
+      return cells;
+    }
+  }
+
   componentDidMount() {
     
   }
@@ -76,6 +105,7 @@ class App extends Component {
             <Nav className="mr-auto navbar-start" onSelect={this.handleChangeColor}>
               <Button onClick={this.handleAddColumn}>Add Column</Button>
               <Button>Remove Column</Button>
+              
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item eventKey="blue">Blue</NavDropdown.Item>
                 <NavDropdown.Item eventKey="red">Red</NavDropdown.Item>
@@ -87,7 +117,12 @@ class App extends Component {
               <Button onClick={this.handleRemoveRow}>Remove Row</Button>
             </Nav>
         </Nav>
-        <Table color={this.state.color} rows={this.state.rows} columns={this.state.columns}/>
+        <Table color={this.state.color} rows={this.state.rows} columns={this.state.columns}
+        isDragged={this.isDragged}
+        handleMouseDown={this.handleMouseDown}
+        handleMouseUp={this.handleMouseUp}
+        handleMouseOver={this.handleMouseOver}
+        />
       </>
     );
   }
