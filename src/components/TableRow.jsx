@@ -12,9 +12,9 @@ class TableRow extends Component {
             key={index.toString(10) + this.props.row}
             value={index.toString(10) + this.props.row}
             color={this.props.color}
-            HandleMouseDown={this.props.handleMouseDown}
-            HandleMouseUp={this.props.handleMouseUp}
-            HandleMouseOver={this.props.handleMouseOver}
+            handleMouseDown={this.props.handleMouseDown}
+            handleMouseUp={this.props.handleMouseUp}
+            handleMouseOver={this.props.handleMouseOver}
           />
         );
       });

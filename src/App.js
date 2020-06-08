@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   handleMouseUp = (event) => {
-    this.setState.state({isDragged: false})
+    this.setState({isDragged: false})
   }
 
   handleAddColumn = () => {
@@ -105,7 +105,7 @@ class App extends Component {
             <Nav className="mr-auto navbar-start" onSelect={this.handleChangeColor}>
               <Button onClick={this.handleAddColumn}>Add Column</Button>
               <Button>Remove Column</Button>
-              <Button onClick={this.fillCellsWithColor}>Fill Cells With Color</Button>
+              
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item eventKey="blue">Blue</NavDropdown.Item>
                 <NavDropdown.Item eventKey="red">Red</NavDropdown.Item>

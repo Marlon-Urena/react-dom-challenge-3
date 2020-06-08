@@ -11,9 +11,9 @@ class TableCell extends Component {
     console.log("table cell" + this.props.color)
     return (<td className="uncolored" 
     onClick={(e) => e.target.className = this.props.color}
-    handleMouseDown = {this.props.handleMouseDown}
-    handleMouseOver = {this.props.handleMouseOver}
-    handleMouseUp = {this.props.handleMouseUp}
+    onMouseDown = {this.props.handleMouseDown}
+    onMouseOver = {this.props.handleMouseOver}
+    onMouseUp = {this.props.handleMouseUp}
     >
     </td>);
   }
