@@ -67,7 +67,7 @@ class App extends Component {
 
   handleRemoveColumn = () => {
     this.setState((state) => {
-      const columns = state.columns.slice(0, state.rows.length - 1);
+      const columns = state.columns.slice(0, state.columns.length - 1);
       return {
         color: state.color,
         rows: state.rows,
@@ -104,7 +104,7 @@ class App extends Component {
         <Nav>
             <Nav className="mr-auto navbar-start" onSelect={this.handleChangeColor}>
               <Button onClick={this.handleAddColumn}>Add Column</Button>
-              <Button>Remove Column</Button>
+              <Button onClick={this.handleRemoveColumn}>Remove Column</Button>
               
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item eventKey="blue">Blue</NavDropdown.Item>
